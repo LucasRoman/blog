@@ -3,13 +3,15 @@
 	<tr>
 		<th>Título</th>
 		<th>Texto</th>
+		<th colspan="2"></th>
 	</tr>
 
 	<% @posts.each do |post| %>
 		<tr>
 			<td><%= post.title.capitalize %></td>
-			<td><%= post.body %></td>
-			<td><%=link_to 'show',post%></td>
+			<td><%= post.text %></td>
+			<td><%= link_to 'Show',post_path(post) %></td>
+			<td><%= link_to 'Edit', edit_post_path(post) %></td>
 		</tr>
 	<% end %>
 </table>
