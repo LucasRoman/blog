@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(post_params)
-
+    #binding.pry
   	if @post.save
   		redirect_to @post
   	else
@@ -21,12 +21,6 @@ class PostsController < ApplicationController
   	end
   end
 
-
-  private
-  	def post_params
-  		params.require(:post).permit(:title, :text) 
-  		# EL text DA ERROR, probé con body pero no guarda el area de texto
-  	end
 
   def edit
   	@post = Post.new(params[:id])
@@ -44,7 +38,7 @@ class PostsController < ApplicationController
 
   private
   	def post_params
-  		params.require(:post).permit(:title, :text)
+  		params.require(:post).permit(:title, :body)
   	end
 
 end
