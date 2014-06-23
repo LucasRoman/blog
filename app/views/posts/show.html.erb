@@ -1,3 +1,3 @@
 <h1><strong><%= @post.title.capitalize %></strong></h1>
-<%= @post.text %>
+<h1><%= @post.body.capitalize %></h1>
 <%= link_to 'Back', posts_path %> | <%= link_to 'Edit', edit_post_path(@post) %>
