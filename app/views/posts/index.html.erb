@@ -1,5 +1,8 @@
-<h1>Lista de posts</h1>
-<table>
+ <FONT FACE="verdana" SIZE=5>
+<h1 align=center>Lista de posts</h1>
+</FONTFACE>
+
+<table align=center>
 	<tr>
 		<th>Título</th>
 		<th>Texto</th>
@@ -9,11 +12,13 @@
 	<% @posts.each do |post| %>
 		<tr>
 			<td><%= post.title.capitalize %></td>
-			<td><%= post.text %></td> 
+			<td><%= post.body %></td> 
 			<td><%= link_to 'Show',post_path(post) %></td>
 			<td><%= link_to 'Edit', edit_post_path(post) %></td>
+			<td><%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: '¿Está seguro que desea borrar este post?'} %></td>
 		</tr>
 	<% end %>
 </table>
+
 
 
