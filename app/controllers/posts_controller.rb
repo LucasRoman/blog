@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def index
   	@posts = Post.all.to_a
   end
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(post_params)
-    #binding.pry
+    
   	if @post.save
   		redirect_to @post
   	else
@@ -21,9 +22,9 @@ class PostsController < ApplicationController
   	end
   end
 
-
   def edit
-  	@post = Post.new(params[:id])
+    #binding.pry
+  	@post = Post.find(params[:id])
   end
 
   def update
@@ -34,6 +35,13 @@ class PostsController < ApplicationController
   	else
   		render 'edit'
   	end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to posts_path
   end
 
   private
