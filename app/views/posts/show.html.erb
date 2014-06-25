@@ -1,3 +1,10 @@
 <h1><strong><%= @post.title.capitalize %></strong></h1>
 <h1><%= @post.body.capitalize %></h1>
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
 <%= link_to 'Back', posts_path %> | <%= link_to 'Edit', edit_post_path(@post) %>
