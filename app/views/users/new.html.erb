@@ -1,0 +1,13 @@
+<h1>Users new</h1>
+
+
+<%= form_for :user do |f| %>
+<p>
+	<%= f.label :email %><br>
+	<%= f.text_field :email %>
+</p>
+
+<p>
+  <%= f.label :password_hash %>
+  <%= f.text_field :password_hash %>
+</p>
