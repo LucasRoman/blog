@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @users = User.all
   end
@@ -18,5 +20,6 @@ class UsersController < ApplicationController
       flash[:color] = "invalid"
     end
     render "new"
-    
+  end
+  
 end
