@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :password, :password_confirmation
-
-  validate :validation_password
+  validates :email, uniqueness: true
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true
   
   before_create :encrypt
 
-  def validation_password!
+  attr_accessor :password, :password_confirmation
+
+  def validation_password
     errors.add(:password, 'Passwords must be equal.') unless password == password_confirmation
   end
 
@@ -17,6 +19,5 @@ class User < ActiveRecord::Base
   def self.authenticate_user(user_id)
     User.find(:user_id)
   end
-
 
 end
