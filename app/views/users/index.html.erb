@@ -1,1 +1,5 @@
-<p>Vista Index de Users (todavía tengo que hacerla)</p>
+<h1>Registered users: </h1>
+
+<% @users.each do |user| %>
+   <%= user.email %><br>
+<% end %>
