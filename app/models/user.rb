@@ -8,10 +8,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :password_confirmation
 
-  def validation_password
-    errors.add(:password, 'Passwords must be equal.') unless password == password_confirmation
-  end
-
   def encrypt
     passwors_hash = Digest::MD5.digest(password)
   end
