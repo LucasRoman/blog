@@ -4,13 +4,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
  
 
-  def Klass
+  def klass
     Post
   end
 
   private
-  	def post_params
-  		params.require(:post).permit(:title, :body)
-  	end
+ 
 
 end
