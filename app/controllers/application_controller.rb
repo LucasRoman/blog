@@ -4,51 +4,54 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
-
  
   def index
     @resourses = klass.all.to_a
   end
 
   def new
-    nombre_variable = "@#{klass.to_s.downcase}"
-    instance_variable_set nombre_variable, klass.new
+    instancia = "@#{klass.to_s.downcase}"
+    instance_variable_set instancia, klass.new
   end
 
   def show
-    @post = Post.find(params[:id])
+    instancia = "@#{klass.to_s.downcase}"
+    instance_variable_set instancia, klass.find params[:id]
   end
 
   def create
-    @resourse = Post.new(resourse_params)
+    instancia = "@#{klass.to_s.downcase}"
+    instance_variable_set instancia, klass.new instancia_params
     
-    if @resourse.save
-      redirect_to @resourse
+    if instancia.save
+      redirect_to instancia
     else
       render 'new'
     end
   end
 
   def edit
-    #binding.pry
-    @resourse = Post.find(params[:id])
+    instancia = "@#{klass.to_s.downcase}"
+    instance_variable_set instancia, klass.find params[:id]
   end
 
   def update
-    @resourse = Post.find(params[:id])
+    instancia = "@#{klass.to_s.downcase}"
+    instance_variable_set instancia, klass.find params[:id]
 
-    if @resourse.update(post_params)
-      redirect_to @resourse
+    if instancia.update(instancia_params)
+      redirect_to instancia
     else
       render 'edit'
     end
   end
 
   def destroy
-    @resourse = Post.find(params[:id])
-    @resourse.destroy
+    instancia = "@#{klass.to_s.downcase}"
+    instance_variable_set instancia, klass.find params[:id]
+    instancia.destroy
 
-    redirect_to resourses_path
+    redirect_to instancias_path
   end
 
 
@@ -61,6 +64,10 @@ class ApplicationController < ActionController::Base
       if session[:user_id] == nil
         redirect_to root_url
       end
+    end
+
+    def instancia_params
+      params.require(:instancia).permit(:title, :body)
     end
 
 end
