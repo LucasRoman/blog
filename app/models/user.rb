@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
 
+  scope :params, -> { find params[:id]  }
+
   def self.authenticate_user email, password
     binding.pry
     find_by email: email, password_hash: Digest::MD5.digest(password).force_encoding('utf-8') 
