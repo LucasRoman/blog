@@ -54,7 +54,6 @@ class ApplicationController < ActionController::Base
     redirect_to instancias_path
   end
 
-
   private
 	  def current_user
 	  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
