@@ -7,5 +7,4 @@ class PostsController < ApplicationController
     Post
   end
 
-
 end
